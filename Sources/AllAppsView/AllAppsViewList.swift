@@ -1,5 +1,3 @@
-
-
 import SwiftUI
 import CoreMotion
 import SafariServices
@@ -32,11 +30,50 @@ class MotionManager: ObservableObject {
             self?.y = y
         }
     }
+    
+    func getOrientation() -> UIInterfaceOrientation? {
+        let scenes = UIApplication.shared.connectedScenes
+        let scene = scenes.first as? UIWindowScene
+        return scene?.interfaceOrientation
+    }
+    
+    func correctXForDeviceOrientation() -> Double {
+        guard let orientation = getOrientation() else { return 0 }
+        switch orientation {
+        case .portrait:
+            return x
+        case .portraitUpsideDown:
+            return -x
+        case .landscapeLeft:
+            return -y
+        case .landscapeRight:
+            return y
+        default:
+            return 0
+        }
+    }
+    
+    func correctYForDeviceOrientation() -> Double {
+        guard let orientation = getOrientation() else { return 0 }
+        switch orientation {
+        case .portrait:
+            return y
+        case .portraitUpsideDown:
+            return -y
+        case .landscapeLeft:
+            return x
+        case .landscapeRight:
+            return -x
+        default:
+            return 0
+        }
+    }
+    
 }
 
 
 @available(iOS 14, macOS 11.0, *)
-public struct AllAppsView<S>: View where S: ListStyle {
+public struct MyAppsListView<S>: View where S: ListStyle {
     
     var listStyle: S
     @StateObject private var motion = MotionManager()
@@ -50,7 +87,7 @@ public struct AllAppsView<S>: View where S: ListStyle {
         self.excludedAppId = excludedAppId
     }
     
-   public var body: some View {
+    public var body: some View {
         
         List {
             ForEach(apps) { app in
@@ -60,61 +97,58 @@ public struct AllAppsView<S>: View where S: ListStyle {
             }
         }
         .listStyle(listStyle)
-       
         .onChange(of: motion.x) { _ in
-            correctXForDeviceOrientation()
+            withAnimation {
+                orientationCorrectedX = motion.correctXForDeviceOrientation()
+            }
         }
-        
         .onChange(of: motion.y) { _ in
-            correctYForDeviceOrientation()
-        }
-    }
-    
-    
-    func correctXForDeviceOrientation() {
-        guard let orientation = getOrientation() else { return }
-        withAnimation {
-            switch orientation {
-            case .portrait:
-                orientationCorrectedX = motion.x
-            case .portraitUpsideDown:
-                orientationCorrectedX = -motion.x
-            case .landscapeLeft:
-                orientationCorrectedX = -motion.y
-            case .landscapeRight:
-                orientationCorrectedX = motion.y
-            default:
-                orientationCorrectedX = 0
+            withAnimation {
+                orientationCorrectedY = motion.correctYForDeviceOrientation()
             }
         }
     }
     
-    func correctYForDeviceOrientation() {
-        guard let orientation = getOrientation() else { return }
-        withAnimation {
-            switch orientation {
-            case .portrait:
-                orientationCorrectedY = motion.y
-            case .portraitUpsideDown:
-                orientationCorrectedY = -motion.y
-            case .landscapeLeft:
-                orientationCorrectedY = motion.x
-            case .landscapeRight:
-                orientationCorrectedY = -motion.x
-            default:
-                orientationCorrectedY = 0
-            }
-        }
-    }
-    
-    func getOrientation() -> UIInterfaceOrientation? {
-        let scenes = UIApplication.shared.connectedScenes
-        let scene = scenes.first as? UIWindowScene
-        return scene?.interfaceOrientation
-    }
 }
 
-
+@available(iOS 14, macOS 11.0, *)
+public struct MyAppsSectionView: View {
+    
+    @StateObject private var motion = MotionManager()
+    let apps = MyApp.allApps
+    var excludedAppId: Int?
+    @State private var orientationCorrectedX = 0.0
+    @State private var orientationCorrectedY = 0.0
+    
+    public init(excludedAppId: Int?) {
+        self.excludedAppId = excludedAppId
+    }
+    
+    public var body: some View {
+        
+        Section(header:
+                    Text("Muut Luontosovellukset")
+                
+        ) {
+            ForEach(apps) { app in
+                if app.id != excludedAppId {
+                    MyAppView(orientationCorrectedX: $orientationCorrectedX, orientationCorrectedY: $orientationCorrectedY, app: app)
+                }
+            }
+        }
+        
+        .onChange(of: motion.x) { _ in
+            withAnimation {
+                orientationCorrectedX = motion.correctXForDeviceOrientation()
+            }
+        }
+        .onChange(of: motion.y) { _ in
+            withAnimation {
+                orientationCorrectedY = motion.correctYForDeviceOrientation()
+            }
+        }
+    }
+}
 
 @available(iOS 14, macOS 11.0, *)
 struct MyAppView: View {
@@ -182,17 +216,3 @@ struct MyAppView: View {
         .padding(.vertical, 5)
     }
 }
-
-
-//struct ContentView_Previews: PreviewProvider {
-//
-//    static var previews: some View {
-//        ContentView()
-//    }
-//
-//}
-
-
-
-
-
