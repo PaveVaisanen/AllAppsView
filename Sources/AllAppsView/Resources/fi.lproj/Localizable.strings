@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  
+
+  Created by Pave Vaisanen on 26.8.2022.
+  
+*/
+
+"linkText" = "Näytä App Storessa";
+
+"SirittäjätName" = "Sirittäjät";
+"LuontotilastotName" = "Luontotilastot";
+"LintunimistöName" = "Lintunimistö";
+
+"SirittäjätText" = "Opi tunnistamaan Suomen heinäsirkkojejen ja hepokattien äänet. Sovellus tehty yhteistyössä lajiasiantuntija Sami Karjalaisen kanssa.";
+"LuontotilastotText" = "Historialliset havaintotiedot kaikista suomalaisista eliöistä. Tilastot perustuvat Lajitietokeskuksen havaintotietokantaan.";
+"LintunimistöText" = "Maailman lintulajien nimet yli 20 eri kielellä.";

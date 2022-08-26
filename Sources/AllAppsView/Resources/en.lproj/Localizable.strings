@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  
+
+  Created by Pave Vaisanen on 26.8.2022.
+  
+*/
+
+"linkText" = "Show in App Store";
+
+"SirittäjätName" = "Chirping guide";
+"LuontotilastotName" = "Nature Stats Finland";
+"LintunimistöName" = "Bird Names Dictionary";
+
+"SirittäjätText" = "Learn to recognize the sounds of Finnish grasshoppers and bushcrickets. The application was made in cooperation with species expert Sami Karjalainen.";
+"LuontotilastotText" = "Historical observation data on all Finnish organisms. The observations are based on the Finnish Biodiversity Information Facility's database.";
+"LintunimistöText" = "The names of the world's bird species in more than 20 different languages.";

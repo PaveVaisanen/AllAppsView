@@ -12,34 +12,34 @@ import SwiftUI
 struct MyApp: Identifiable {
     
     let id: Int
-    var imageName: String
     var name: String
     var description: String
     var link: String
     var backgroundColor: Color
+    var image: UIImage
     
     static let allApps: [MyApp] = [
     
         MyApp(id: 3,
-              imageName: "Sirittäjät",
-              name: "Sirittäjät",
-              description: "Opi tunnistamaan Suomen heinäsirkkojejen ja hepokattien äänet. Sovellus tehty yhteistyössä lajiasiantuntija Sami Karjalaisen kanssa.",
+              name: NSLocalizedString("SirittäjätName", bundle: Bundle.module, comment: ""),
+              description: NSLocalizedString("SirittäjätText", bundle: Bundle.module, comment: ""),
               link: "https://apps.apple.com/fi/app/siritt%C3%A4j%C3%A4t/id1612850740?l=fi",
-              backgroundColor: .white
+              backgroundColor: .white,
+              image: UIImage(named: "Sirittäjät", in: .module, with: nil)!
              ),
         MyApp(id: 2,
-              imageName: "Luontotilastot",
-              name: "Luontotilastot",
-              description: "Historialliset havaintotiedot kaikista suomalaisista eliöistä. Tilastot perustuvat Lajitietokeskuksen havaintotietokantaan.",
+              name: NSLocalizedString("LuontotilastotName", bundle: Bundle.module, comment: ""),
+              description: NSLocalizedString("LuontotilastotText", bundle: Bundle.module, comment: ""),
               link: "https://apps.apple.com/fi/app/luontotilastot/id1552025977?l=fi",
-              backgroundColor: Color(red: 210/255, green: 235/255, blue: 249/255)
+              backgroundColor: Color(red: 210/255, green: 235/255, blue: 249/255),
+              image: UIImage(named: "Luontotilastot", in: .module, with: nil)!
              ),
         MyApp(id: 1,
-              imageName: "Lintunimistö",
-              name: "Lintunimistö",
-              description: "Maailman lintulajien nimet yli 20 eri kielellä.",
+              name: NSLocalizedString("LintunimistöName", bundle: Bundle.module, comment: ""),
+              description: NSLocalizedString("LintunimistöText", bundle: Bundle.module, comment: ""),
               link: "https://apps.apple.com/fi/app/lintunimist%C3%B6/id1436321814?l=fi",
-              backgroundColor: Color(red: 215/255, green: 223/255, blue: 28/255)
+              backgroundColor: Color(red: 215/255, green: 223/255, blue: 28/255),
+              image: UIImage(named: "Lintunimistö", in: .module, with: nil)!
              ),
     ]
 }

@@ -156,6 +156,7 @@ struct MyAppView: View {
     @Environment(\.colorScheme) var colorScheme
     @Binding var orientationCorrectedX: Double
     @Binding var orientationCorrectedY: Double
+    let linkText = NSLocalizedString("linkText", bundle: Bundle.module, comment: "")
     var app: MyApp
     
     var body: some View {
@@ -182,7 +183,7 @@ struct MyAppView: View {
                         axis: (x: 1, y: 0, z: 0)
                     )
                 
-                Image(app.imageName)
+                Image(uiImage: app.image)
                     .resizable()
                     .frame(width: 80, height: 80)
                     .shadow(
@@ -206,7 +207,7 @@ struct MyAppView: View {
                     .foregroundColor(Color(UIColor.secondaryLabel))
                     .padding(.bottom, 5)
                 
-                Link("Näytä App Storessa", destination: URL(string: app.link)!)
+                Link(linkText, destination: URL(string: app.link)!)
                     .font(.footnote)
                     .foregroundColor(.blue)
                     .buttonStyle(BorderlessButtonStyle())
