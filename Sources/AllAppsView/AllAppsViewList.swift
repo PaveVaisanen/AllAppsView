@@ -127,7 +127,7 @@ public struct MyAppsSectionView: View {
     public var body: some View {
         
         Section(header:
-                    Text("Muut Luontosovellukset")
+                    Text("\(NSLocalizedString("Muut Luontosovellukset", bundle: Bundle.module, comment: ""))")
                 
         ) {
             ForEach(apps) { app in
