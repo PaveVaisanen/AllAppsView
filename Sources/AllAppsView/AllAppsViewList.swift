@@ -1,75 +1,7 @@
 import SwiftUI
-import CoreMotion
 import SafariServices
 
-@available(iOS 14, macOS 11.0, *)
-class MotionManager: ObservableObject {
-    
-    private let motionManager = CMMotionManager()
-    @Published var x = 0.0
-    @Published var y = 0.0
-    
-    init() {
-        
-        guard motionManager.isDeviceMotionAvailable else { return }
-        motionManager.deviceMotionUpdateInterval = 0.05
-        
-        motionManager.startDeviceMotionUpdates(to: .main) { [weak self] data, error in
-            guard let motion = data?.attitude else { return }
-            
-            var x = motion.roll / Double.pi
-            let y = motion.pitch / Double.pi
-            
-            if x > 0.5 {
-                x = 1 - x
-            } else if x < -0.5 {
-                x = -1 - x
-            }
-            
-            self?.x = x
-            self?.y = y
-        }
-    }
-    
-    func getOrientation() -> UIInterfaceOrientation? {
-        let scenes = UIApplication.shared.connectedScenes
-        let scene = scenes.first as? UIWindowScene
-        return scene?.interfaceOrientation
-    }
-    
-    func correctXForDeviceOrientation() -> Double {
-        guard let orientation = getOrientation() else { return 0 }
-        switch orientation {
-        case .portrait:
-            return x
-        case .portraitUpsideDown:
-            return -x
-        case .landscapeLeft:
-            return -y
-        case .landscapeRight:
-            return y
-        default:
-            return 0
-        }
-    }
-    
-    func correctYForDeviceOrientation() -> Double {
-        guard let orientation = getOrientation() else { return 0 }
-        switch orientation {
-        case .portrait:
-            return y
-        case .portraitUpsideDown:
-            return -y
-        case .landscapeLeft:
-            return x
-        case .landscapeRight:
-            return -x
-        default:
-            return 0
-        }
-    }
-    
-}
+
 
 
 @available(iOS 14, macOS 11.0, *)
@@ -77,22 +9,22 @@ public struct MyAppsListView<S>: View where S: ListStyle {
     
     var listStyle: S
     @StateObject private var motion = MotionManager()
-    let apps = MyApp.allApps
-    var excludedAppId: Int?
+    let allApps = MyApp.allApps
+    var appList: [AppEnum] = []
     @State private var orientationCorrectedX = 0.0
     @State private var orientationCorrectedY = 0.0
     
-    public init(listStyle: S, excludedAppId: Int?) {
+    public init(listStyle: S, appList: [AppEnum]) {
         self.listStyle = listStyle
-        self.excludedAppId = excludedAppId
+        self.appList = appList
     }
     
     public var body: some View {
         
         List {
-            ForEach(apps) { app in
-                if app.id != excludedAppId {
-                    MyAppView(orientationCorrectedX: $orientationCorrectedX, orientationCorrectedY: $orientationCorrectedY, app: app)
+            ForEach(appList, id: \.self) { app in
+                if let correctApp = allApps.filter { $0.appEnum == app }.first {
+                    MyAppView(orientationCorrectedX: $orientationCorrectedX, orientationCorrectedY: $orientationCorrectedY, app: correctApp)
                 }
             }
         }
@@ -108,31 +40,30 @@ public struct MyAppsListView<S>: View where S: ListStyle {
             }
         }
     }
-    
 }
 
 @available(iOS 14, macOS 11.0, *)
 public struct MyAppsSectionView: View {
     
     @StateObject private var motion = MotionManager()
-    let apps = MyApp.allApps
-    var excludedAppId: Int?
+    let allApps = MyApp.allApps
+    var appList: [AppEnum] = []
     @State private var orientationCorrectedX = 0.0
     @State private var orientationCorrectedY = 0.0
     
-    public init(excludedAppId: Int?) {
-        self.excludedAppId = excludedAppId
+    public init(appList: [AppEnum]) {
+        self.appList = appList
     }
     
     public var body: some View {
         
         Section(header:
-                    Text("\(NSLocalizedString("Muut Luontosovellukset", bundle: Bundle.module, comment: ""))")
+                    Text("\(NSLocalizedString("Muut kehittäjän sovellukset", bundle: Bundle.module, comment: ""))")
                 
         ) {
-            ForEach(apps) { app in
-                if app.id != excludedAppId {
-                    MyAppView(orientationCorrectedX: $orientationCorrectedX, orientationCorrectedY: $orientationCorrectedY, app: app)
+            ForEach(appList, id: \.self) { app in
+                if let correctApp = allApps.filter { $0.appEnum == app }.first {
+                    MyAppView(orientationCorrectedX: $orientationCorrectedX, orientationCorrectedY: $orientationCorrectedY, app: correctApp)
                 }
             }
         }
@@ -161,7 +92,7 @@ struct MyAppView: View {
     
     var body: some View {
         
-        HStack(alignment: .center) {
+        HStack(alignment: .top) {
             ZStack {
                 Rectangle()
                     .frame(width: 80, height: 80)

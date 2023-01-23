@@ -11,7 +11,12 @@
 "SirittäjätName" = "Sirittäjät";
 "LuontotilastotName" = "Luontotilastot";
 "LintunimistöName" = "Lintunimistö";
+"SähkönhintaName" = "Sähkön hintatiedot";
+"RuuvipenkkiName" = "Ruuvipenkki";
 
+
+"SähkönhintaText" = "Pörssisähkön hinta selville nopeasti. Myös Apple Watchilla ja Macillä.";
 "SirittäjätText" = "Opi tunnistamaan Suomen heinäsirkkojejen ja hepokattien äänet. Sovellus tehty yhteistyössä lajiasiantuntija Sami Karjalaisen kanssa.";
 "LuontotilastotText" = "Historialliset havaintotiedot kaikista suomalaisista eliöistä. Tilastot perustuvat Lajitietokeskuksen havaintotietokantaan.";
 "LintunimistöText" = "Maailman lintulajien nimet yli 20 eri kielellä.";
+"RuuvipenkkiText" = "Ruuvi-antureiden seuranta kaikilla Apple-laitteilla ja iCloud synkronoinnilla.";

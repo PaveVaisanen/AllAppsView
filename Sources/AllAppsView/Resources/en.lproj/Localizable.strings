@@ -11,8 +11,13 @@
 "SirittäjätName" = "Chirping guide";
 "LuontotilastotName" = "Nature Stats Finland";
 "LintunimistöName" = "Bird Names Dictionary";
+"SähkönhintaName" = "Electricity price";
+"RuuvipenkkiName" = "Ruuvi-bench";
 
+
+"SähkönhintaText" = "Find out the price of electricity in Finland. Also on Apple Watch and Mac.";
 "SirittäjätText" = "Learn to recognize the sounds of Finnish grasshoppers and bushcrickets. The application was made in cooperation with species expert Sami Karjalainen.";
 "LuontotilastotText" = "Historical observation data on all Finnish organisms. The observations are based on the Finnish Biodiversity Information Facility's database.";
 "LintunimistöText" = "The names of the world's bird species in more than 20 different languages.";
-"Muut Luontosovellukset" = "Other nature apps";
+"Muut kehittäjän sovellukset" = "Other apps from the developer";
+"RuuvipenkkiText" = "Monitor Ruuvi-sensors with all Apple-devices and with iCloud sync.";
