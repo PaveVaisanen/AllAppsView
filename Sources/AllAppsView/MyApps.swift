@@ -34,7 +34,7 @@ struct MyApp: Identifiable {
               name: NSLocalizedString("PyöräasematName", bundle: Bundle.module, comment: ""),
               description: NSLocalizedString("PyöräasematText", bundle: Bundle.module, comment: ""),
               link: "https://apps.apple.com/fi/app/py%C3%B6r%C3%A4asemat/id1573151079?l=fi",
-              backgroundColor: Color(red: 0/255, green: 114/255, blue: 187/255),
+              backgroundColor: Color(red: 44/255, green: 158/255, blue: 255/255),
               image: UIImage(named: "Pyöräasemat", in: .module, with: nil)!
              ),
         
