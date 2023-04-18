@@ -13,8 +13,9 @@
 "LintunimistöName" = "Bird Names Dictionary";
 "SähkönhintaName" = "Electricity price";
 "RuuvipenkkiName" = "Ruuvi-bench";
+"PyöräasematName" = "Bikestations Helsinki";
 
-
+"PyöräasematText" = "The location and number of city bikes in Helsinki and Espoo. Also available on Mac and Apple Watch.";
 "SähkönhintaText" = "Find out the price of electricity in Finland. Also on Apple Watch and Mac.";
 "SirittäjätText" = "Learn to recognize the sounds of Finnish grasshoppers and bushcrickets. The application was made in cooperation with species expert Sami Karjalainen.";
 "LuontotilastotText" = "Historical observation data on all Finnish organisms. The observations are based on the Finnish Biodiversity Information Facility's database.";

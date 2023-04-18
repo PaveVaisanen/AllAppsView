@@ -13,8 +13,9 @@
 "LintunimistöName" = "Lintunimistö";
 "SähkönhintaName" = "Sähkön hintatiedot";
 "RuuvipenkkiName" = "Ruuvipenkki";
+"PyöräasematName" = "Pyöräasemat";
 
-
+"PyöräasematText" = "Stadin kaupunkifillareiden sijainti ja lukumäärä nopeasti selville. Käytettävissä myös Macillä ja Apple Watchilla.";
 "SähkönhintaText" = "Pörssisähkön hinta selville nopeasti. Myös Apple Watchilla ja Macillä.";
 "SirittäjätText" = "Opi tunnistamaan Suomen heinäsirkkojejen ja hepokattien äänet. Sovellus tehty yhteistyössä lajiasiantuntija Sami Karjalaisen kanssa.";
 "LuontotilastotText" = "Historialliset havaintotiedot kaikista suomalaisista eliöistä. Tilastot perustuvat Lajitietokeskuksen havaintotietokantaan.";

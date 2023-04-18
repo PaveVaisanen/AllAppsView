@@ -8,7 +8,7 @@
 
 @available(iOS 14, macOS 11.0, *)
 public enum AppEnum {
-    case sirittäjät,luontotilastot,lintunimistö,sähkönHinta,ruuvipenkki
+    case sirittäjät,luontotilastot,lintunimistö,sähkönHinta,ruuvipenkki,pyöräasemat
 }
 
 
@@ -28,6 +28,15 @@ struct MyApp: Identifiable {
     
     static let allApps: [MyApp] = [
         
+        
+        MyApp(id: 6,
+              appEnum: .pyöräasemat,
+              name: NSLocalizedString("PyöräasematName", bundle: Bundle.module, comment: ""),
+              description: NSLocalizedString("PyöräasematText", bundle: Bundle.module, comment: ""),
+              link: "https://apps.apple.com/fi/app/py%C3%B6r%C3%A4asemat/id1573151079?l=fi",
+              backgroundColor: Color(red: 0/255, green: 114/255, blue: 187/255),
+              image: UIImage(named: "Pyöräasemat", in: .module, with: nil)!
+             ),
         
         MyApp(id: 5,
               appEnum: .ruuvipenkki,
