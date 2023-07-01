@@ -14,6 +14,7 @@
 "SähkönhintaName" = "Electricity price";
 "RuuvipenkkiName" = "Ruuvi-bench";
 "PyöräasematName" = "Bikestations Helsinki";
+"LinnunäänetName" = "Bird Sounds of Nothern Europe";
 
 "PyöräasematText" = "The location and number of city bikes in Helsinki and Espoo. Also available on Mac and Apple Watch.";
 "SähkönhintaText" = "Find out the price of electricity in Finland. Also on Apple Watch and Mac.";
@@ -22,3 +23,4 @@
 "LintunimistöText" = "The names of the world's bird species in more than 20 different languages.";
 "Muut kehittäjän sovellukset" = "Other apps from the developer";
 "RuuvipenkkiText" = "Monitor Ruuvi-sensors with all Apple-devices and with iCloud sync.";
+"LinnunÄänetText" = "Comprehensive guide for bird sounds. Nearly 300 species, over 2200 recordings."

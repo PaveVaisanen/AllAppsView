@@ -23,7 +23,7 @@ public struct MyAppsListView<S>: View where S: ListStyle {
         
         List {
             ForEach(appList, id: \.self) { app in
-                if let correctApp = allApps.filter { $0.appEnum == app }.first {
+                if let correctApp = allApps.filter({ $0.appEnum == app }).first {
                     MyAppView(orientationCorrectedX: $orientationCorrectedX, orientationCorrectedY: $orientationCorrectedY, app: correctApp)
                 }
             }
@@ -62,7 +62,7 @@ public struct MyAppsSectionView: View {
                 
         ) {
             ForEach(appList, id: \.self) { app in
-                if let correctApp = allApps.filter { $0.appEnum == app }.first {
+                if let correctApp = allApps.filter({ $0.appEnum == app }).first {
                     MyAppView(orientationCorrectedX: $orientationCorrectedX, orientationCorrectedY: $orientationCorrectedY, app: correctApp)
                 }
             }
